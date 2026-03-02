@@ -1,4 +1,4 @@
-# Cohort-17-Child-Malnutrition-Analysis
+<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/53e80a26-1c1e-4138-aa8f-78c9dae5e3e7" /># Cohort-17-Child-Malnutrition-Analysis
 # Predicting Stunting Percentage in Children Under Five Using Maternal Literacy and Prenatal Care Access
 
 * **SDG Goal:** SDG 2 - Zero Hunger
@@ -10,7 +10,7 @@
 | USN | Name | Role |
 | :--- | :--- | :--- |
 | 1GC23CS419<br>1GC22CS068 | Tasaduque Ullah<br>Mohammed Umar Maniyar | Data Collection |
-| 1HK22AI062<br>1GC22CS096 | Zeba Shine<br>Safdar Iqbal | EDA |
+| 1HK22AI062<br>1GC22CS096 | Zeba Shine<br>Safdar Iqbal | Data preprocessing and EDA |
 | 1ST22CS240<br>1EW22IS070<br>1ST22CS241<br>1MV22EC056 | Vasanth Kumar H R<br>Nakshatra S<br>Vibhashree R<br>Harshith G K | ML Engineer |
 | 2AV22CS005<br>4AD22EC062 | Amruta Suresh Aralelimath<br>Nayana M B | Evaluation |
 | 1HK22AI063<br>1HK22EC051<br>1DT22IC003 | Hafeeza Tasneem<br>Hajira Shahanz A<br>Akshay S | Documentation |
