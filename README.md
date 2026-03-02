@@ -9,17 +9,12 @@
 
 | USN | Name | Role |
 | :--- | :--- | :--- |
-| 1GC23CS419 <br> 1GC22CS068 | Tasaduque Ullah <br> Mohammed Umar Maniyar | Data Collection |
-| 1HK22A1062 | Zeba Shine | EDA |
-| 1GC22CS096 | Safdar Iqbal |  |
-| 1ST22CS240 <br> 1EW22IS070 | Vasanth Kumar HR <br> Nakshatra S | ML Engineer |
-| 1ST22CS241 | Vibhashree R |  |
-| 1MV22EC056 | Harshith GK |  |
-| 2AV22CS005 <br> 4AD22EC062 | Amruta Suresh Aralelimath <br> Nayana M B | Evaluation |
-| 1HK22A1063 | Hafeeza Tasneem |  |
-| 1HK22EC051 | Hajira Shahanz A | Documentation |
-| 1DT22IC003 | Akshay S |  |
-| 4VM22IS004 <br> 1RI22CS108 | Benaka M <br> Sridhar Y Gowdar | Git Hub Repo |
+| 1GC23CS419<br>1GC22CS068 | Tasaduque Ullah<br>Mohammed Umar Maniyar | Data Collection |
+| 1HK22AI062<br>1GC22CS096 | Zeba Shine<br>Safdar Iqbal | EDA |
+| 1ST22CS240<br>1EW22IS070<br>1ST22CS241<br>1MV22EC056 | Vasanth Kumar H R<br>Nakshatra S<br>Vibhashree R<br>Harshith G K | ML Engineer |
+| 2AV22CS005<br>4AD22EC062 | Amruta Suresh Aralelimath<br>Nayana M B | Evaluation |
+| 1HK22AI063<br>1HK22EC051<br>1DT22IC003 | Hafeeza Tasneem<br>Hajira Shahanz A<br>Akshay S | Documentation |
+| 4VM22IS004<br>1RI22CS108 | Benaka M<br>Sridhar Y Gowdar | Git Hub Repo |
 
 ### Cohort Leaders
 
