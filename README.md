@@ -1,4 +1,3 @@
-<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/53e80a26-1c1e-4138-aa8f-78c9dae5e3e7" /># Cohort-17-Child-Malnutrition-Analysis
 # Predicting Stunting Percentage in Children Under Five Using Maternal Literacy and Prenatal Care Access
 
 * **SDG Goal:** SDG 2 - Zero Hunger
