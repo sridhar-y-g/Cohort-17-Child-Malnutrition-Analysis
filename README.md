@@ -155,4 +155,172 @@ Regular group meetings were conducted to ensure systematic progress and collabor
 * **26th February 2026:** Finalizing dataset selection, reviewing variables, and planning preprocessing steps.
 * **27th February 2026:** Handling missing values using mode imputation, reviewing EDA outputs, and correlation analysis interpretation.
 * **28th February 2026:** Training regression models, comparing Linear Regression, Decision Tree, and Random Forest, and reviewing evaluation metrics (MAE and $R^{2}$).
-* **1st March 2026:** Model comparison, selecting best-performing model, and finalizing documentation structure.
+* **1st March 2026:** Model comparison, selecting best-performing model, and finalizing documentation # ==============================
+# CHILD MALNUTRITION ANALYSIS
+# SDG 2 – Zero Hunger
+# ==============================
+
+# 1. Import Libraries
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+# ------------------------------
+# 2. Load Dataset
+# ------------------------------
+# 👉 Replace with your file name
+df = pd.read_csv("child_malnutrition.csv")
+
+print("Dataset Shape:", df.shape)
+print("\nFirst 5 rows:")
+print(df.head())
+
+# ------------------------------
+# 3. Basic Data Inspection
+# ------------------------------
+print("\nData Info:")
+print(df.info())
+
+print("\nMissing Values:")
+print(df.isnull().sum())
+
+# ------------------------------
+# 4. Remove Duplicates
+# ------------------------------
+df = df.drop_duplicates()
+
+# ------------------------------
+# 5. Mode Imputation for Categorical Columns
+# ------------------------------
+categorical_cols = df.select_dtypes(include='object').columns
+
+print("\nCategorical Columns:", list(categorical_cols))
+
+for col in categorical_cols:
+    mode_val = df[col].mode()[0]
+    df[col].fillna(mode_val, inplace=True)
+
+# ------------------------------
+# 6. Handle Numerical Missing Values (optional safety)
+# ------------------------------
+numerical_cols = df.select_dtypes(include=np.number).columns
+
+for col in numerical_cols:
+    df[col].fillna(df[col].median(), inplace=True)
+
+print("\nMissing Values After Cleaning:")
+print(df.isnull().sum())
+
+# ------------------------------
+# 7. Exploratory Data Analysis
+# ------------------------------
+plt.figure(figsize=(6,4))
+sns.histplot(df['stunting_percentage'], kde=True)
+plt.title("Distribution of Stunting Percentage")
+plt.show()
+
+# Correlation heatmap
+plt.figure(figsize=(8,6))
+sns.heatmap(df.corr(numeric_only=True), annot=True, cmap='coolwarm')
+plt.title("Correlation Heatmap")
+plt.show()
+
+# ------------------------------
+# 8. Encode Categorical Variables
+# ------------------------------
+df_encoded = pd.get_dummies(df, drop_first=True)
+
+# ------------------------------
+# 9. Define Features and Target
+# ------------------------------
+TARGET = 'stunting_percentage'
+
+X = df_encoded.drop(TARGET, axis=1)
+y = df_encoded[TARGET]
+
+print("\nFeature Shape:", X.shape)
+
+# ------------------------------
+# 10. Train-Test Split
+# ------------------------------
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# ------------------------------
+# 11. Train Linear Regression Model
+# ------------------------------
+lr_model = LinearRegression()
+lr_model.fit(X_train, y_train)
+
+# Predictions
+y_pred_lr = lr_model.predict(X_test)
+
+# ------------------------------
+# 12. Train Decision Tree (Optional but useful)
+# ------------------------------
+dt_model = DecisionTreeRegressor(max_depth=4, random_state=42)
+dt_model.fit(X_train, y_train)
+
+y_pred_dt = dt_model.predict(X_test)
+
+# ------------------------------
+# 13. Evaluation Function
+# ------------------------------
+def evaluate_model(y_true, y_pred, model_name):
+    mae = mean_absolute_error(y_true, y_pred)
+    rmse = np.sqrt(mean_squared_error(y_true, y_pred))
+    r2 = r2_score(y_true, y_pred)
+
+    print(f"\n🔹 {model_name} Performance")
+    print("MAE :", round(mae, 3))
+    print("RMSE:", round(rmse, 3))
+    print("R2  :", round(r2, 3))
+
+# Evaluate models
+evaluate_model(y_test, y_pred_lr, "Linear Regression")
+evaluate_model(y_test, y_pred_dt, "Decision Tree")
+
+# ------------------------------
+# 14. Actual vs Predicted Plot
+# ------------------------------
+plt.figure(figsize=(6,5))
+plt.scatter(y_test, y_pred_lr)
+plt.xlabel("Actual Stunting %")
+plt.ylabel("Predicted Stunting %")
+plt.title("Actual vs Predicted (Linear Regression)")
+plt.show()
+
+# ------------------------------
+# 15. Residual Plot
+# ------------------------------
+residuals = y_test - y_pred_lr
+
+plt.figure(figsize=(6,4))
+sns.histplot(residuals, kde=True)
+plt.title("Residual Distribution")
+plt.show()
+
+# ------------------------------
+# 16. Feature Importance (Decision Tree)
+# ------------------------------
+importance = pd.Series(
+    dt_model.feature_importances_,
+    index=X.columns
+).sort_values(ascending=False)
+
+print("\nTop Feature Importances:")
+print(importance.head(10))
+
+plt.figure(figsize=(8,5))
+importance.head(10).plot(kind='bar')
+plt.title("Top Feature Importances")
+plt.show()
+
+
